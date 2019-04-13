@@ -1,0 +1,63 @@
+int red = D1;
+int green = D2;
+int blue = D3;
+bool redON=false;
+bool greenON=false;
+bool blueON=false;
+int ledControl(String(value));
+
+void setup() {
+    pinMode(red,OUTPUT);
+    pinMode(green,OUTPUT);
+    pinMode(blue,OUTPUT);
+
+    Particle.function("led",ledControl);
+
+}
+
+void loop() {
+
+
+}
+
+int ledControl(String value){
+    if (value =="red"){
+        if (redON==false){
+            digitalWrite(red,HIGH);
+            redON=true;
+            return 11;
+        }
+        else{
+            digitalWrite(red,LOW);
+            redON=false;
+            return 10;
+        }
+    }
+    else if (value =="green"){
+        if (greenON==false){
+            digitalWrite(green,HIGH);
+            greenON=true;
+            return 21;
+        }
+        else{
+            digitalWrite(green,LOW);
+            greenON=false;
+            return 20;
+        }
+    }
+    else if (value=="blue"){
+        if (blueON==false){
+            digitalWrite(blue,HIGH);
+            blueON=true;
+            return 31;
+        }
+        else{
+        digitalWrite(blue,LOW);
+        blueON=false;
+        return 30;
+        }
+    }
+    else{
+        return 0;
+    }
+}
